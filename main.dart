@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, // Desabilita o banner de depuração
+      debugShowCheckedModeBanner: false,
       title: 'Formulário de Dados',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -46,7 +46,7 @@ class _FormularioDadosState extends State<FormularioDados> {
               Text('Sexo: $sexoSelecionado'),
               Text('Escolaridade: $escolaridadeSelecionada'),
               Text('Limite na Conta: R\$ ${limiteConta.toStringAsFixed(2)}'),
-              Text('Brasileiro: ${brasileiro ? 'Sim' : 'Não'}'),
+              Text('Nacionalidade: ${brasileiro ? 'Brasileiro' : 'Estrangeiro'}'),
             ],
           ),
           actions: [
@@ -69,7 +69,7 @@ class _FormularioDadosState extends State<FormularioDados> {
         title: Text('Abertura de conta'),
         centerTitle: true,
       ),
-      backgroundColor: Colors.white, // Define a cor de fundo do Scaffold
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -80,11 +80,13 @@ class _FormularioDadosState extends State<FormularioDados> {
                 controller: nomeController,
                 decoration: InputDecoration(labelText: 'Nome'),
               ),
+              SizedBox(height: 16.0), 
               TextField(
                 controller: idadeController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(labelText: 'Idade'),
               ),
+              SizedBox(height: 16.0), 
               DropdownButtonFormField<String>(
                 value: sexoSelecionado,
                 onChanged: (value) {
@@ -101,6 +103,7 @@ class _FormularioDadosState extends State<FormularioDados> {
                 }).toList(),
                 decoration: InputDecoration(labelText: 'Sexo'),
               ),
+              SizedBox(height: 16.0), 
               DropdownButtonFormField<String>(
                 value: escolaridadeSelecionada,
                 onChanged: (value) {
@@ -117,7 +120,9 @@ class _FormularioDadosState extends State<FormularioDados> {
                 }).toList(),
                 decoration: InputDecoration(labelText: 'Escolaridade'),
               ),
+              SizedBox(height: 16.0), 
               Text('Limite na Conta: R\$ ${limiteConta.toStringAsFixed(2)}'),
+              SizedBox(height: 16.0), 
               Slider(
                 value: limiteConta,
                 onChanged: (value) {
@@ -129,19 +134,22 @@ class _FormularioDadosState extends State<FormularioDados> {
                 max: 1000,
                 divisions: 50,
               ),
+              SizedBox(height: 16.0), 
               Row(
                 children: [
                   Text('Brasileiro:'),
-                  Checkbox(
+                  SizedBox(width: 8.0), 
+                  Switch(
                     value: brasileiro,
                     onChanged: (value) {
                       setState(() {
-                        brasileiro = value ?? false;
+                        brasileiro = value;
                       });
                     },
                   ),
                 ],
               ),
+              SizedBox(height: 16.0), 
               ElevatedButton(
                 onPressed: _exibirDados,
                 child: Text('Confirmar'),
