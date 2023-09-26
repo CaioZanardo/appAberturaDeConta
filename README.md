@@ -4,6 +4,6 @@
 
 ![PRINT!](Preencher.png)
 
-- Após clicar no botão confirmar este é o resultado
+- Após clicar no botão "confirmar" exibi as informações no "AlertDialog"
 
 ![PRINT!](dados.png)
